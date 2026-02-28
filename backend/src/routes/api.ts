@@ -5,9 +5,9 @@ import { apiRateLimit } from '../middleware/rateLimit';
 
 const router = Router();
 
-// Apply auth and rate limiting to all API routes
-router.use(requireAuth);
-router.use(apiRateLimit);
+// Apply auth and rate limiting to UKG API routes only
+router.use('/ta/', requireAuth);
+router.use('/ta/', apiRateLimit);
 
 // ─── v1 Saved Reports ───────────────────────────────────────────────
 router.get('/ta/rest/v1/report/saved/:reportId', (req: AuthRequest, res: Response) => {
